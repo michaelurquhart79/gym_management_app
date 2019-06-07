@@ -3,6 +3,7 @@ require_relative('../db/sql_runner')
 
 class Member
   attr_reader( :first_name, :last_name, :id)
+  attr_writer( :first_name, :last_name) # for testing in pry only. Remove later.
 
   def initialize(options)
     @first_name = options['first_name']
@@ -24,6 +25,16 @@ class Member
   def delete()
     sql = "DELETE FROM members WHERE id = $1"
     values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
+  def update()
+    sql = "UPDATE members SET
+    (first_name, last_name)
+    =
+    ($1, $2)
+    WHERE id = $3"
+    values = [@first_name, @last_name, @id]
     SqlRunner.run(sql, values)
   end
 
