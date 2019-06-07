@@ -32,6 +32,11 @@ class2 = GymClass.new({
   })
 class2.save
 
+booking1 = Booking.new({
+  "member_id" => member1.id,
+  "gym_class_id" => class1.id
+  })
+
 binding.pry
 
 nil
