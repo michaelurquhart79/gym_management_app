@@ -17,7 +17,12 @@ member2 = Member.new({
   })
 member2.save
 
-binding.pry
+class1 = GymClass.new({
+  "name" => "Pilates",
+  "class_time" => "09:00",
+  "class_date" => "2019-06-11"
+  })
 
+binding.pry
 
 nil
