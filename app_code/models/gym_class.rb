@@ -28,6 +28,15 @@ class GymClass
     SqlRunner.run(sql, values)
   end
 
+  def update()
+    sql = "UPDATE gym_classes
+    SET (name, class_time, class_date)
+    = ($1, $2, $3)
+    WHERE id = $4"
+    values = [@name, @class_time, @class_date, @id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.all()
     sql = "SELECT * FROM gym_classes"
     classes_hashes = SqlRunner.run(sql)
