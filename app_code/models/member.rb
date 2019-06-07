@@ -21,5 +21,11 @@ class Member
     @id = result[0]['id'].to_i
   end
 
+  def delete()
+    sql = "DELETE FROM members WHERE id = $1"
+    values = [@id]
+    SqlRunner.run(sql, values)
+  end
+
 
 end
