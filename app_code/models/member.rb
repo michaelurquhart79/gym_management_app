@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 
 class Member
-  attr_reader( :first_name, :last_name)
+  attr_reader( :first_name, :last_name, :id)
 
   def initialize(options)
     @first_name = options['first_name']
@@ -37,6 +37,14 @@ class Member
     members_hashes = SqlRunner.run(sql)
     members_objects = members_hashes.map {|member| Member.new(member)}
     return members_objects
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM members WHERE id = $1"
+    values = [id]
+    member_hash = SqlRunner.run(sql, values)[0]
+    member_object = Member.new(member_hash)
+    return member_object
   end
 
 
