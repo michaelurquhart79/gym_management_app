@@ -36,6 +36,7 @@ booking1 = Booking.new({
   "member_id" => member1.id,
   "gym_class_id" => class1.id
   })
+booking1.save
 
 binding.pry
 
