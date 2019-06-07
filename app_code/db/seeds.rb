@@ -22,6 +22,7 @@ class1 = GymClass.new({
   "class_time" => "09:00",
   "class_date" => "2019-06-11"
   })
+class1.save
 
 binding.pry
 
