@@ -7,6 +7,7 @@ member1 = Member.new({
   "first_name" => "Michael",
   "last_name" => "Urquhart"
   })
+member1.save
 
 binding.pry
 
