@@ -1,4 +1,5 @@
 require_relative('../db/sql_runner')
+require_relative('./member')
 
 class GymClass
   attr_reader( :id, :name, :class_time, :class_date)
@@ -35,6 +36,15 @@ class GymClass
     WHERE id = $4"
     values = [@name, @class_time, @class_date, @id]
     SqlRunner.run(sql, values)
+  end
+
+  def members()
+    sql = "SELECT members.* FROM members
+    INNER JOIN bookings ON members.id = bookings.member_id
+    WHERE bookings.gym_class_id = $1"
+    values = [@id]
+    members_hashes = SqlRunner.run(sql, values)
+    members_objects = members_hashes.map {|member| Member.new(member)}
   end
 
   def self.all()
