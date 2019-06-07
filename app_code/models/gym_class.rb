@@ -29,4 +29,9 @@ class GymClass
     return classes_objects
   end
 
+  def self.delete_all()
+    sql = "DELETE FROM gym_classes"
+    SqlRunner.run(sql)
+  end
+
 end

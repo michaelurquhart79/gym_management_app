@@ -4,6 +4,7 @@ require_relative("../models/member")
 require("pry-byebug")
 
 Member.delete_all()
+GymClass.delete_all()
 
 member1 = Member.new({
   "first_name" => "Michael",
