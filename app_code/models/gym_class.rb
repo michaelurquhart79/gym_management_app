@@ -20,7 +20,13 @@ class GymClass
     values = [@name, @class_time, @class_date]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id']
+  end
 
+  def self.all()
+    sql = "SELECT * FROM gym_classes"
+    classes_hashes = SqlRunner.run(sql)
+    classes_objects = classes_hashes.map{|gym_class| GymClass.new(gym_class)}
+    return classes_objects
   end
 
 end
