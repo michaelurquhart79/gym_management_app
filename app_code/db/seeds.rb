@@ -11,6 +11,12 @@ member1 = Member.new({
   })
 member1.save
 
+member2 = Member.new({
+  "first_name" => "Steven",
+  "last_name" => "Morrison"
+  })
+member2.save
+
 binding.pry
 
 

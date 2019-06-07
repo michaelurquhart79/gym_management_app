@@ -32,5 +32,12 @@ class Member
     SqlRunner.run(sql)
   end
 
+  def self.all()
+    sql = "SELECT * FROM members"
+    members_hashes = SqlRunner.run(sql)
+    members_objects = members_hashes.map {|member| Member.new(member)}
+    return members_objects
+  end
+
 
 end
