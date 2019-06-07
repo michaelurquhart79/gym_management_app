@@ -1,6 +1,8 @@
 require_relative('../db/sql_runner')
 
 class Booking
+  attr_reader :id, :member_id, :gym_class_id
+  attr_writer :member_id, :gym_class_id # should only be need to test update method using pry in seeds file
 
   def initialize(options)
     @id = options['id'].to_i if options['id']
@@ -33,6 +35,14 @@ class Booking
     bookings_hashes = SqlRunner.run(sql)
     bookings_objects = bookings_hashes.map {|booking| Booking.new(booking)}
     return bookings_objects
+  end
+
+  def self.find_by_id(id)
+    sql = "SELECT * FROM bookings WHERE id = $1"
+    values = [id]
+    booking_hash = SqlRunner.run(sql, values)[0]
+    booking_object = Booking.new(booking_hash)
+    return booking_object
   end
 
 
