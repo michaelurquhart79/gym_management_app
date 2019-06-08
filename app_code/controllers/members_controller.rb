@@ -12,6 +12,12 @@ get '/members/new' do
   erb (:"members/new")
 end
 
+get '/members/:id/classes' do
+  @member = Member.find_by_id(params[:id])
+  @members_classes = @member.gym_classes()
+  erb (:"members/classes")
+end
+
 post '/members' do
   new_member = Member.new(params)
   new_member.save()

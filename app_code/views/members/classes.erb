@@ -1,0 +1,13 @@
+
+<h1>Member's class bookings</h1>
+
+<h3>
+Member <%=  @member.first_name %> <%= @member.last_name %> has the following class bookings:
+</h3>
+<hr>
+<% for gym_class in @members_classes%>
+  <p><%= gym_class.name %></p>
+  <p><%= gym_class.class_time %></p>
+  <p><%= gym_class.class_date %></p>
+  <hr>
+<% end %>
