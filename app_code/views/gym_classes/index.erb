@@ -1,1 +1,17 @@
 <h1>Classes from erb</h1>
+
+<h2>Note this page contains information for all future and historical classes.</h2>
+
+<a href="/gym_classes/new">Create New Class</a>
+
+
+<hr>
+<%for gym_class in @gym_classes%>
+  <p><%= gym_class.name %></p>
+  <p><%= gym_class.class_time %></p>
+  <p><%= gym_class.class_date %></p>
+    <form action="/gym_classes/<%= gym_class.id %>/delete" method="post">
+      <input type="submit" value="Delete Class">
+    </form>
+  <hr>
+<% end %>
