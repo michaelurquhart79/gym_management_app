@@ -10,9 +10,12 @@
   <p><%= gym_class.name %></p>
   <p><%= gym_class.class_time %></p>
   <p><%= gym_class.class_date %></p>
+  
   <a href="/gym_classes/<%= gym_class.id %>/members">View members booked into class</a>
-    <form action="/gym_classes/<%= gym_class.id %>/delete" method="post">
-      <input type="submit" value="Delete Class">
-    </form>
+
+  <form action="/gym_classes/<%= gym_class.id %>/delete" method="post">
+    <input type="submit" value="Delete Class">
+  </form>
+
   <hr>
 <% end %>
