@@ -1,1 +1,24 @@
-TESTY TEXTY
+<h1>Make a Booking</h1>
+
+<h3>Please choose the member and class using the drop-down boxes then click on the Make Booking button to make a new booking.</h3>
+
+<form action="/bookings" method="post">
+
+  <label for="member-field">Member:</label>
+  <select name="id" id="member-field">
+    <% for member in @members %>
+      <option value="<%= member.id %>"><%= "#{member.first_name} #{member.last_name}" %></option>
+    <% end %>
+  </select>
+
+  <label for="class-field">Class:</label>
+  <select name="gym_class_id" id="class-field">
+    <% for gym_class in @gym_classes %>
+      <option value="<%= gym_class.id %>">
+        <%= "#{gym_class.name}, #{gym_class.class_time}, #{gym_class.class_date}" %>
+      </option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Make Booking">
+</form>
