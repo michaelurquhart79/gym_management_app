@@ -41,7 +41,16 @@ class Booking
     member_hash = SqlRunner.run(sql, values)[0]
     member_object = Member.new(member_hash)
   end
-  
+
+  def gym_class()
+    sql = "SELECT * FROM gym_classes
+    WHERE id = $1"
+    values = [@gym_class_id]
+    gym_class_hash = SqlRunner.run(sql, values)[0]
+    gym_class_object = GymClass.new(gym_class_hash)
+    return gym_class_object
+  end
+
 
   def self.delete_all
     sql = "DELETE FROM bookings"
