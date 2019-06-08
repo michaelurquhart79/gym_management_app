@@ -14,3 +14,9 @@ end
 get '/bookings/new' do
   erb(:"bookings/new")
 end
+
+post '/bookings/:id/delete' do
+  booking = Booking.find_by_id(params[:id])
+  booking.delete
+  redirect to '/bookings'
+end
