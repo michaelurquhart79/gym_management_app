@@ -1,1 +1,17 @@
-<h1>BOOKINGS from erb</h1>
+<h1>
+  <a href="/bookings/new">Click here to make a new booking</a>
+</h1>
+
+<h1>Below is a list of all past and present bookings:</h1>
+
+<hr>
+
+<% for booking in @bookings %>
+  <p><%= "#{booking.member.first_name} #{booking.member.last_name} booked on #{booking.gym_class.name} class on #{booking.gym_class.class_date} at #{booking.gym_class.class_time}" %></p>
+
+  <form action="bookings/<%= booking.id %>/delete" method="post">
+    <input type="submit" value="Delete booking">
+  </form>
+
+  <hr>
+<% end %>
