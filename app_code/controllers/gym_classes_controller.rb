@@ -1,5 +1,6 @@
 require('sinatra')
 require('sinatra/contrib/all')
+require("pry-byebug")
 require_relative('../models/gym_class')
 also_reload('../models/*')
 
@@ -10,6 +11,13 @@ end
 
 get '/gym_classes/new' do
   erb (:"gym_classes/new")
+end
+
+get '/gym_classes/:id/members' do
+  @gym_class = GymClass.find_by_id(params[:id])
+  @gym_class_members = @gym_class.members
+  # binding.pry
+  erb (:"gym_classes/members")
 end
 
 post '/gym_classes' do

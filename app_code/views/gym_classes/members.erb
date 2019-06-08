@@ -1,0 +1,16 @@
+<%# have access to:
+@gym_class = GymClass.find_by_id(params[:id])
+@gym_class_members = @gym_class.members %>
+
+<h2>Gym Class</h2>
+<p><%= @gym_class.name %></p>
+<p><%= @gym_class.class_time %></p>
+<p><%= @gym_class.class_date %></p>
+<hr>
+<h2>Has the following members booked into it:</h2>
+<% for member in @gym_class_members %>
+  <p>
+    <span><%= member.first_name %> </span>
+    <span><%= member.last_name %> </span>
+  </p>
+<% end %>
