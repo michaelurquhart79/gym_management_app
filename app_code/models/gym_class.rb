@@ -59,6 +59,12 @@ class GymClass
     SqlRunner.run(sql)
   end
 
+  def self.destroy(id)
+    sql = "DELETE FROM gym_classes WHERE id = $1"
+    values = [id]
+    SqlRunner.run(sql, values)
+  end
+
   def self.find_by_id(id)
     sql = "SELECT * FROM gym_classes WHERE id = $1"
     values = [id]
