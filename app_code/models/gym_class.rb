@@ -47,6 +47,18 @@ class GymClass
     members_objects = members_hashes.map {|member| Member.new(member)}
   end
 
+  def time()
+    return Time.parse("#{@class_date} #{@class_time}")
+  end
+
+  def future?()
+    if self.time() > Time.now
+      return true
+    else
+      return false
+    end
+  end
+
   def self.all()
     sql = "SELECT * FROM gym_classes"
     classes_hashes = SqlRunner.run(sql)

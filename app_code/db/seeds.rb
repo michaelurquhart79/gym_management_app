@@ -2,6 +2,7 @@ require_relative("../models/booking")
 require_relative("../models/gym_class")
 require_relative("../models/member")
 require("pry-byebug")
+require("time")
 
 Booking.delete_all()
 Member.delete_all()
@@ -32,6 +33,14 @@ class2 = GymClass.new({
   "class_date" => "2019-06-15"
   })
 class2.save
+
+class3 = GymClass.new({
+  "name" => "Yoga",
+  "class_time" => "10:00",
+  "class_date" => "2018-06-15"
+  })
+class3.save
+
 
 booking1 = Booking.new({
   "member_id" => member1.id,
