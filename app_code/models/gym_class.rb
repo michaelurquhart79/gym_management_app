@@ -85,4 +85,9 @@ class GymClass
     return class_object
   end
 
+  def self.future()
+    gym_class_array = self.all()
+    return gym_class_array.find_all{|gym_class| gym_class.future?}
+  end
+
 end

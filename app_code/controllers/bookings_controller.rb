@@ -13,7 +13,7 @@ end
 
 get '/bookings/new' do
   @members = Member.all
-  @gym_classes = GymClass.all
+  @gym_classes = GymClass.future
   erb(:"bookings/new")
 end
 
