@@ -28,6 +28,11 @@ get '/gym_classes/:id/members' do
   erb (:"gym_classes/members")
 end
 
+get "/gym_classes/:id/edit" do
+  @gym_class = GymClass.find_by_id(params[:id])
+  erb (:"gym_classes/edit")
+end
+
 post '/gym_classes' do
   gym_class = GymClass.new(params)
   gym_class.save
@@ -36,5 +41,10 @@ end
 
 post '/gym_classes/:id/delete' do
   GymClass.destroy(params[:id])
+  redirect to ('/gym_classes')
+end
+
+post '/gym_classes/:id/edit' do
+  GymClass.new(params).update()
   redirect to ('/gym_classes')
 end

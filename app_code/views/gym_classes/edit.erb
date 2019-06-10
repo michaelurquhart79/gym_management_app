@@ -1,0 +1,14 @@
+<h1>Please amend the details in the form below then hit the "Save changes" button.</h1>
+
+<form action="/gym_classes/<%= @gym_class.id %>/edit" method="post">
+  <label for="class-name-field">Class name:</label>
+  <input type="text" name="name" id="class-name-field" value="<%= @gym_class.name %>">
+
+  <label for="class-time-field">Class Time:</label>
+  <input type="time" name="class_time" id="class-time-field" min="07:00" max="22:00" step="300" value="<%= @gym_class.class_time %>">
+
+  <label for="class-date-field">Class Date:</label>
+  <input type="date" name="class_date" id="class-date-field" value="<%= @gym_class.class_date %>">
+
+  <input type="submit" value="Save changes">
+</form>
