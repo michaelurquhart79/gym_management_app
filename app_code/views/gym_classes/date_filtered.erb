@@ -1,11 +1,11 @@
-<h1>Classes List</h1>
+<h1>Classes List - Date Filtered</h1>
 
-<h2>Note: this page contains information for all future and historical classes.</h2>
+<h2>Note: this page contains information for classes between <%= @filter_start %> and <%= @filter_end %>.</h2>
 <h3>
   <a href="/gym_classes/new">Create New Class</a>
 </h3>
 
-<p>To view classes in a selected date range, please complete the date fields below for the start and end of the range and hit the "Time filter" button.</p>
+<p>To view classes in a different date range, please complete the date fields below for the start and end of the range and hit the "Time filter" button.</p>
 
 <form action="/gym_classes/date_filtered" method="get">
   <label for="lower-bound-date-field">Filter Start Date:</label>
@@ -17,7 +17,7 @@
 
 
 <hr>
-<%for gym_class in @gym_classes%>
+<%for gym_class in @filtered_gym_classes%>
   <p><%= gym_class.name %></p>
   <p><%= gym_class.class_time %></p>
   <p><%= gym_class.class_date %></p>

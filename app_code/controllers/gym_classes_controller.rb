@@ -14,6 +14,13 @@ get '/gym_classes/new' do
   erb (:"gym_classes/new")
 end
 
+get '/gym_classes/date_filtered' do
+  @filter_start = params['filter_start_date']
+  @filter_end = params['filter_end_date']
+  @filtered_gym_classes = GymClass.date_filtered(@filter_start, @filter_end)
+  erb ((:"gym_classes/date_filtered"))
+end
+
 get '/gym_classes/:id/members' do
   @gym_class = GymClass.find_by_id(params[:id])
   @gym_class_members = @gym_class.members

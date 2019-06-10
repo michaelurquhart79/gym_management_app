@@ -1,3 +1,4 @@
+require 'date'
 require_relative('../db/sql_runner')
 require_relative('./member')
 
@@ -51,6 +52,10 @@ class GymClass
     return Time.parse("#{@class_date} #{@class_time}")
   end
 
+  def date()
+    return Date.parse(@class_date)
+  end
+
   def future?()
     if self.time() > Time.now
       return true
@@ -88,6 +93,19 @@ class GymClass
   def self.future()
     gym_class_array = self.all()
     return gym_class_array.find_all{|gym_class| gym_class.future?}
+  end
+
+# GymClass.date_filtered(@filter_start, @filter_end)
+
+  def self.date_filtered(start_date, end_date)
+    gym_class_array = self.all()
+    return gym_class_array.find_all do |gym_class|
+      # (Date.parse(@class_date) >= Date.parse(start_date))
+      after_start = (gym_class.date >= Date.parse(start_date))
+      before_end = (gym_class.date <= Date.parse(end_date))
+
+      after_start && before_end
+    end
   end
 
 end
