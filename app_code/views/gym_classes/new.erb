@@ -1,9 +1,15 @@
+<h1>Create a new class</h1>
+
+<p>To create a new class, please fill in all the details below then click the "Save new class" button.</p>
+<p>Note that classes cannot be created for a day before today.</p>
+<p>Also, classes can only be created between the hours of 07:00 and 22:00.</p>
+
 <form action="/gym_classes" method="post">
   <label for="class-name-field">Class name:</label>
   <input type="text" name="name" id="class-name-field">
 
   <label for="class-time-field">Class Time:</label>
-  <input type="time" name="class_time" id="class-time-field">
+  <input type="time" name="class_time" id="class-time-field" min="07:00" max="22:00" step="300">
 
   <label for="class-date-field">Class Date:</label>
   <input type="date" name="class_date" id="class-date-field" min="<%= @date_today %>">
