@@ -18,6 +18,11 @@ get '/members/:id/classes' do
   erb (:"members/classes")
 end
 
+get '/members/:id/edit' do
+  @member = Member.find_by_id(params[:id])
+  erb( :"members/edit")
+end
+
 post '/members' do
   new_member = Member.new(params)
   new_member.save()
@@ -28,4 +33,9 @@ post '/members/:id/delete' do
   member = Member.find_by_id(params[:id])
   member.delete()
   redirect to ('/members')
+end
+
+post '/members/:id' do
+  Member.new(params).update
+  redirect to '/members'
 end
