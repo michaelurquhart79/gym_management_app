@@ -10,6 +10,7 @@ get '/gym_classes' do
 end
 
 get '/gym_classes/new' do
+  @date_today = Date.today
   erb (:"gym_classes/new")
 end
 

@@ -6,7 +6,7 @@
   <input type="time" name="class_time" id="class-time-field">
 
   <label for="class-date-field">Class Date:</label>
-  <input type="date" name="class_date" id="class-date-field">
+  <input type="date" name="class_date" id="class-date-field" min="<%= @date_today %>">
 
   <input type="submit" value="Save new class">
 </form>
