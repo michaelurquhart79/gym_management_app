@@ -10,5 +10,9 @@
   <label for="class-date-field">Class Date:</label>
   <input type="date" name="class_date" id="class-date-field" value="<%= @gym_class.class_date %>">
 
+  <label for="class-capacity-field">Class Capacity:</label>
+  <input type="number" name="capacity" id="class-capacity-field"
+  min="<%= @gym_class.members.count %>" value="<%= @gym_class.capacity %>">
+
   <input type="submit" value="Save changes">
 </form>

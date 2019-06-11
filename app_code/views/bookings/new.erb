@@ -14,7 +14,8 @@
   <label for="class-field">Class:</label>
   <select name="gym_class_id" id="class-field">
     <% for gym_class in @gym_classes %>
-      <option value="<%= gym_class.id %>">
+      <option value="<%= gym_class.id %>" <%= "disabled" unless gym_class.free_spaces? %>>
+
         <%= "#{gym_class.name}, #{gym_class.class_time}, #{gym_class.class_date}" %>
       </option>
     <% end %>

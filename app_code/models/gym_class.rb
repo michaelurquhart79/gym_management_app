@@ -65,6 +65,19 @@ class GymClass
     end
   end
 
+  def spaces()
+    booked_in = self.members.count()
+    return @capacity - booked_in
+  end
+
+  def free_spaces?()
+    if self.spaces > 0
+      return true
+    else
+      return false
+    end
+  end
+
   def self.all()
     sql = "SELECT * FROM gym_classes"
     classes_hashes = SqlRunner.run(sql)
