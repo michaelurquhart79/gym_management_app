@@ -10,13 +10,15 @@ GymClass.delete_all()
 
 member1 = Member.new({
   "first_name" => "Michael",
-  "last_name" => "Urquhart"
+  "last_name" => "Urquhart",
+  "type" => "standard"
   })
 member1.save
 
 member2 = Member.new({
   "first_name" => "Steven",
-  "last_name" => "Morrison"
+  "last_name" => "Morrison",
+  "type" => "off-peak"
   })
 member2.save
 

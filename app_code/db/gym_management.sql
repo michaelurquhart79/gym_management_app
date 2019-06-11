@@ -5,7 +5,8 @@ DROP TABLE gym_classes;
 CREATE TABLE members (
   id SERIAL8 PRIMARY KEY,
   first_name VARCHAR(255),
-  last_name VARCHAR(255)
+  last_name VARCHAR(255),
+  type VARCHAR(255)
 );
 
 CREATE TABLE gym_classes (

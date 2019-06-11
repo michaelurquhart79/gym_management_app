@@ -4,22 +4,23 @@ require_relative('./booking')
 
 
 class Member
-  attr_reader( :first_name, :last_name, :id)
-  attr_writer( :first_name, :last_name) # for testing in pry only. Remove later.
+  attr_reader( :first_name, :last_name, :id, :type)
+  attr_writer( :first_name, :last_name, :type) # for testing in pry only. Remove later.
 
   def initialize(options)
     @first_name = options['first_name']
     @last_name = options['last_name']
     @id = options['id'].to_i if options['id']
+    @type = options['type']
   end
 
   def save()
     sql = "INSERT INTO members
-    (first_name, last_name)
+    (first_name, last_name, type)
     VALUES
-    ($1, $2)
+    ($1, $2, $3)
     RETURNING id"
-    values = [@first_name, @last_name]
+    values = [@first_name, @last_name, @type]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id'].to_i
   end
@@ -32,11 +33,11 @@ class Member
 
   def update()
     sql = "UPDATE members SET
-    (first_name, last_name)
+    (first_name, last_name, type)
     =
-    ($1, $2)
-    WHERE id = $3"
-    values = [@first_name, @last_name, @id]
+    ($1, $2, $3)
+    WHERE id = $4"
+    values = [@first_name, @last_name, @type, @id]
     SqlRunner.run(sql, values)
   end
 
