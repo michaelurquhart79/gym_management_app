@@ -12,7 +12,8 @@ CREATE TABLE gym_classes (
   id SERIAL8 PRIMARY KEY,
   name VARCHAR(255),
   class_time VARCHAR(255),
-  class_date VARCHAR(255)
+  class_date VARCHAR(255),
+  spaces INT8
 );
 
 CREATE TABLE bookings (

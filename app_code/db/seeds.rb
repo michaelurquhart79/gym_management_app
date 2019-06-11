@@ -23,21 +23,24 @@ member2.save
 class1 = GymClass.new({
   "name" => "Pilates",
   "class_time" => "09:00",
-  "class_date" => "2019-06-11"
+  "class_date" => "2019-06-11",
+  "spaces" => "10"
   })
 class1.save
 
 class2 = GymClass.new({
   "name" => "Yoga",
   "class_time" => "10:00",
-  "class_date" => "2019-06-15"
+  "class_date" => "2019-06-15",
+  "spaces" => "2"
   })
 class2.save
 
 class3 = GymClass.new({
   "name" => "Yoga",
   "class_time" => "10:00",
-  "class_date" => "2018-06-15"
+  "class_date" => "2018-06-15",
+  "spaces" => "6"
   })
 class3.save
 

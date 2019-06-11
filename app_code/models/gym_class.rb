@@ -3,23 +3,24 @@ require_relative('../db/sql_runner')
 require_relative('./member')
 
 class GymClass
-  attr_reader( :id, :name, :class_time, :class_date)
-  attr_writer( :name, :class_time, :class_date ) # only required for initial update method checking in pry
+  attr_reader( :id, :name, :class_time, :class_date, :spaces)
+  attr_writer( :name, :class_time, :class_date, :spaces ) # only required for initial update method checking in pry
 
   def initialize(options)
     @id = options['id'] if options['id']
     @name = options['name']
     @class_time = options['class_time']
     @class_date = options['class_date']
+    @spaces = options['spaces'].to_i
   end
 
   def save()
     sql = "INSERT INTO gym_classes
-    (name, class_time, class_date)
+    (name, class_time, class_date, spaces)
     VALUES
-    ($1, $2, $3)
+    ($1, $2, $3, $4)
     RETURNING id"
-    values = [@name, @class_time, @class_date]
+    values = [@name, @class_time, @class_date, @spaces]
     result = SqlRunner.run(sql, values)
     @id = result[0]['id']
   end
@@ -32,10 +33,10 @@ class GymClass
 
   def update()
     sql = "UPDATE gym_classes
-    SET (name, class_time, class_date)
-    = ($1, $2, $3)
-    WHERE id = $4"
-    values = [@name, @class_time, @class_date, @id]
+    SET (name, class_time, class_date, spaces)
+    = ($1, $2, $3, $4)
+    WHERE id = $5"
+    values = [@name, @class_time, @class_date, @spaces, @id]
     SqlRunner.run(sql, values)
   end
 
