@@ -39,8 +39,9 @@ get "/gym_classes/:id/edit" do
 end
 
 post '/gym_classes' do
-  gym_class = GymClass.new(params)
-  gym_class.save
+  # gym_class = GymClass.new(params)
+  # gym_class.save
+  GymClass.multi_new(params)
   redirect to ('/gym_classes')
 end
 

@@ -140,5 +140,17 @@ class GymClass
     end
   end
 
+  def self.multi_new(params)
+    first_date_string = params['class_date']
+    date_object = Date.parse(first_date_string)
+    number_of_classes = params['weeks_ahead'].to_i
 
+    number_of_classes.times do
+      gym_class = self.new(params)
+      gym_class.save
+      date_object += 7
+      date_string = date_object.to_s
+      params['class_date'] = date_string
+    end
+  end
 end
