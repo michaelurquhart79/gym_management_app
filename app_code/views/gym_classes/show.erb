@@ -1,0 +1,15 @@
+<h1>Class Details</h1>
+
+
+<p>Class Name: <%= @gym_class.name %></p>
+<p>Class Time: <%= @gym_class.class_time %></p>
+<p>Class Date: <%= @gym_class.class_date %></p>
+
+
+<p><a href="/gym_classes/<%= @gym_class.id %>/edit">Edit class details</a></p>
+
+<p><a href="/gym_classes/<%= @gym_class.id %>/members">View members booked into class</a></p>
+
+<form action="/gym_classes/<%= @gym_class.id %>/delete" method="post">
+  <input type="submit" value="Delete Class">
+</form>
