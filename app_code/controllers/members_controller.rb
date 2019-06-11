@@ -12,6 +12,11 @@ get '/members/new' do
   erb (:"members/new")
 end
 
+get '/members/:id' do
+  @member = Member.find_by_id(params[:id])
+  erb (:"members/show")
+end
+
 get '/members/:id/classes' do
   @member = Member.find_by_id(params[:id])
   @members_classes = @member.gym_classes()
