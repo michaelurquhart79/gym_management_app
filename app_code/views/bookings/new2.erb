@@ -1,0 +1,25 @@
+<h1>Make a Booking: Select Class</h1>
+
+<h3>Please choose the class using the drop-down box then click on the Make Booking button to make a new booking.</h3>
+
+<p><%= @member.first_name %></p>
+
+
+
+<form action="/bookings/<%= @member.id %>" method="post">
+
+
+
+  <label for="class-field">Class:</label>
+  <select name="gym_class_id" id="class-field">
+    <% for gym_class in @gym_classes %>
+      <option value="<%= gym_class.id %>" <%= "disabled" unless gym_class.free_spaces? %>>
+        <%string = "#{gym_class.name}, #{gym_class.class_time}, #{gym_class.class_date}"%>
+        <%string = string + " (FULL)" unless gym_class.free_spaces?%>
+        <%= string %>
+      </option>
+    <% end %>
+  </select>
+
+  <input type="submit" value="Make booking">
+</form>

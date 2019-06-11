@@ -7,5 +7,11 @@
   <label for="last-name">Last Name:</label>
   <input type="text" name="last_name" id="last-name" value="<%=@member.last_name %>">
 
+  <label for="type_field">Membership Type:</label>
+  <select name="type" id="type_field" value="<%= @member.type %>">
+    <option value="standard">Standard</option>
+    <option value="off-peak">Off-Peak</option>
+  </select>
+
   <input type="submit" value="Save changes">
 </form>

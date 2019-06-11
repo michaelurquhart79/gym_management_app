@@ -1,6 +1,8 @@
 require 'date'
+require 'pry-byebug'
 require_relative('../db/sql_runner')
 require_relative('./member')
+
 
 class GymClass
   attr_reader( :id, :name, :class_time, :class_date, :capacity)
@@ -78,6 +80,14 @@ class GymClass
     end
   end
 
+  def bookable_by_offpeak?()
+    result = false
+    time_string = self.class_time
+    result = true if self.date.saturday? || self.date.sunday?
+    result = true if self.class_time >= "09:00" && self.class_time < "17:00"
+    return result
+  end
+
   def self.all()
     sql = "SELECT * FROM gym_classes"
     classes_hashes = SqlRunner.run(sql)
@@ -121,5 +131,14 @@ class GymClass
       after_start && before_end
     end
   end
+
+  def self.bookable(member)
+    return self.future() if member.type == "standard"
+    future_classes_array = self.future()
+    return future_classes_array.find_all do
+      |gym_class| gym_class.bookable_by_offpeak?()
+    end
+  end
+
 
 end

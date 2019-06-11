@@ -1,8 +1,8 @@
-<h1>Make a Booking</h1>
+<h1>Make a Booking - Step 1, choose member</h1>
 
-<h3>Please choose the member and class using the drop-down boxes then click on the Make Booking button to make a new booking.</h3>
+<h3>Please choose the member using the drop-down box then click on the "Choose member for booking" button. The class will be selected in Step 2.</h3>
 
-<form action="/bookings" method="post">
+<form action="/bookings/new/step2" method="get">
 
   <label for="member-field">Member:</label>
   <select name="id" id="member-field">
@@ -11,15 +11,7 @@
     <% end %>
   </select>
 
-  <label for="class-field">Class:</label>
-  <select name="gym_class_id" id="class-field">
-    <% for gym_class in @gym_classes %>
-      <option value="<%= gym_class.id %>" <%= "disabled" unless gym_class.free_spaces? %>>
 
-        <%= "#{gym_class.name}, #{gym_class.class_time}, #{gym_class.class_date}" %>
-      </option>
-    <% end %>
-  </select>
 
-  <input type="submit" value="Make Booking">
+  <input type="submit" value="Choose member for booking">
 </form>
