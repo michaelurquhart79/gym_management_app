@@ -13,7 +13,7 @@ CREATE TABLE gym_classes (
   name VARCHAR(255),
   class_time VARCHAR(255),
   class_date VARCHAR(255),
-  spaces INT8
+  capacity INT8
 );
 
 CREATE TABLE bookings (
