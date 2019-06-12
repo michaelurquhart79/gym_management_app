@@ -89,7 +89,7 @@ class GymClass
   end
 
   def self.all()
-    sql = "SELECT * FROM gym_classes"
+    sql = "SELECT * FROM gym_classes ORDER BY class_date, class_time ASC"
     classes_hashes = SqlRunner.run(sql)
     classes_objects = classes_hashes.map{|gym_class| GymClass.new(gym_class)}
     return classes_objects

@@ -28,6 +28,14 @@ post '/bookings/:id/delete' do
   redirect to '/bookings'
 end
 
+post '/bookings/:member_id/:gym_class_id/delete' do
+  booking = Booking.find_by_member_class_ids(params[:member_id], params[:gym_class_id])
+  booking.delete
+  # redirect to '/members'
+  redirect to "/members/#{params[:member_id]}/classes"
+end
+
+
 post '/bookings/:id' do
   gym_class = GymClass.find_by_id(params[:gym_class_id])
   member = Member.find_by_id(params[:id])

@@ -58,7 +58,7 @@ class Booking
   end
 
   def self.all()
-    sql = "SELECT * FROM bookings"
+    sql = "SELECT * FROM bookings ORDER BY member_id ASC"
     bookings_hashes = SqlRunner.run(sql)
     bookings_objects = bookings_hashes.map {|booking| Booking.new(booking)}
     return bookings_objects
@@ -72,6 +72,13 @@ class Booking
     return booking_object
   end
 
+  def self.find_by_member_class_ids(member_id, gym_class_id)
+    sql = "SELECT * FROM bookings WHERE member_id = $1 AND gym_class_id = $2"
+    values = [member_id, gym_class_id]
+    booking_hash = SqlRunner.run(sql, values)[0]
+    booking_object = Booking.new(booking_hash)
+    return booking_object
+  end
 
 
 end

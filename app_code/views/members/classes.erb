@@ -9,5 +9,12 @@ Member <%=  @member.first_name %> <%= @member.last_name %> has the following cla
   <p><%= gym_class.name %></p>
   <p><%= gym_class.class_time %></p>
   <p><%= gym_class.class_date %></p>
+
+
+  <form action="/bookings/<%= @member.id %>/<%= gym_class.id %>/delete" method="post">
+    <input type="submit" value="Delete Booking">
+  </form>
+
+
   <hr>
 <% end %>

@@ -65,7 +65,7 @@ class Member
   end
 
   def self.all()
-    sql = "SELECT * FROM members"
+    sql = "SELECT * FROM members ORDER BY last_name, first_name ASC"
     members_hashes = SqlRunner.run(sql)
     members_objects = members_hashes.map {|member| Member.new(member)}
     return members_objects
