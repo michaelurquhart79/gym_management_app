@@ -3,23 +3,34 @@
   <head>
     <meta charset="utf-8">
     <title>Gym Management</title>
+
+
+    <link href="/styles/general.css" type="text/css" rel="stylesheet"
+
+
   </head>
   <body>
-    <nav>
-      <ul>
-        <li>
-          <a href="/members">Members</a>
-        </li>
-        <li>
-          <a href="/gym_classes">Classes</a>
-        </li>
-        <li>
-          <a href="/bookings">Bookings</a>
-        </li>
-      </ul>
-    </nav>
 
-    <section id="content">
+    <header>
+      <p>Average Joe's Gym</p>
+
+
+      <nav id="nav-hello">
+        <ul>
+          <li>
+            <a href="/members">Members</a>
+          </li>
+          <li>
+            <a href="/gym_classes">Classes</a>
+          </li>
+          <li>
+            <a href="/bookings">Bookings</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="content">
     <%= yield %>
     </section>
   </body>

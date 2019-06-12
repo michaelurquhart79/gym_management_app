@@ -1,0 +1,47 @@
+
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+@import url(https://fonts.googleapis.com/css?family=Questrial);
+
+@import url(https://fonts.googleapis.com/css?family=Graduate);
+
+
+header{
+
+  background-color: hsl(48, 100%, 50%);
+  width: 100%;
+  font-size: 60px;
+  text-align: center;
+  color: hsl(0, 100%, 50%);
+  font-family: 'Lobster', 'courier';
+  font-weight: 400;
+  margin: 0;
+
+}
+
+header p{
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+ul{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+li a{
+  margin: 5px;
+}
+
+nav{
+  font-size: 20px;
+}
+
+.content{
+  font-family: 'Questrial';
+}
+body{
+  background-color: hsl(60, 100%, 90%)
+}
