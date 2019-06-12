@@ -132,13 +132,13 @@ class GymClass
     end
   end
 
-  def self.bookable(member)
-    return self.future() if member.type == "standard"
-    future_classes_array = self.future()
-    return future_classes_array.find_all do
-      |gym_class| gym_class.bookable_by_offpeak?()
-    end
-  end
+  # def self.bookable(member)
+  #   return self.future() if member.type == "standard"
+  #   future_classes_array = self.future()
+  #   return future_classes_array.find_all do
+  #     |gym_class| gym_class.bookable_by_offpeak?()
+  #   end
+  # end
 
   def self.multi_new(params)
     first_date_string = params['class_date']
@@ -153,4 +153,29 @@ class GymClass
       params['class_date'] = date_string
     end
   end
+
+  def self.bookable(member)
+    # get classes in the future
+    gym_class_filtered_array = self.future
+    # get classes booked for specific member
+    gym_classes_booked = member.gym_classes
+
+    for gym_class in gym_classes_booked
+      gym_class_filtered_array.delete_if {|future_gym_class| gym_class.id == future_gym_class.id }
+    end
+    #
+    # for future_gym_class in gym_class_filtered_array
+    #   for booked_gym_class in gym_classes_booked
+    #     gym_class_filtered_array.delete(future_gym_class) if booked_gym_class.id == future_gym_class.id
+    #   end
+    # end
+
+    # additional filtering required based on membership type
+    return gym_class_filtered_array if member.type == "standard"
+
+    return gym_class_filtered_array.find_all do
+      |gym_class| gym_class.bookable_by_offpeak?()
+    end
+  end
+
 end
