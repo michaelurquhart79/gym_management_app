@@ -6,7 +6,7 @@
 
 <hr>
 <% for member in @members %>
-  <p><%= member.last_name %>, <%= member.first_name %> (<%= member.id %>)</p>
+  <p><%= member.first_name %> <%= member.last_name %> (<%= member.id %>)</p>
 
   <p><a href="/members/<%= member.id %>">View member's details</a></p>
 
